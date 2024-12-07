@@ -9,19 +9,48 @@
     <div class="container">
         <h1>德州扑克分析助手</h1>
         
-        <div class="input-section">
+        <div class="input-mode-switch">
+            <button class="mode-btn active" data-mode="structured">结构化输入</button>
+            <button class="mode-btn" data-mode="freetext">自由文本输入</button>
+        </div>
+
+        <!-- 结构化输入表单 -->
+        <div id="structuredInput" class="input-section">
             <div class="form-group">
-                <label for="handCards">手牌：</label>
-                <input type="text" id="handCards" placeholder="例如：红桃A 方块K">
+                <label>手牌：</label>
+                <div class="card-selector">
+                    <select id="card1" class="card-select">
+                        <option value="">选择第一张牌</option>
+                    </select>
+                    <select id="card2" class="card-select">
+                        <option value="">选择第二张牌</option>
+                    </select>
+                </div>
             </div>
             
             <div class="form-group">
-                <label for="communityCards">公共牌：</label>
-                <input type="text" id="communityCards" placeholder="例如：红桃K 梅花10 方块2">
+                <label>公共牌：</label>
+                <div class="card-selector">
+                    <select id="flop1" class="card-select">
+                        <option value="">翻牌1</option>
+                    </select>
+                    <select id="flop2" class="card-select">
+                        <option value="">翻牌2</option>
+                    </select>
+                    <select id="flop3" class="card-select">
+                        <option value="">翻牌3</option>
+                    </select>
+                    <select id="turn" class="card-select">
+                        <option value="">转牌</option>
+                    </select>
+                    <select id="river" class="card-select">
+                        <option value="">河牌</option>
+                    </select>
+                </div>
             </div>
             
             <div class="form-group">
-                <label for="position">位置：</label>
+                <label for="position">我的位置：</label>
                 <select id="position">
                     <option value="BTN">按钮位(BTN)</option>
                     <option value="SB">小盲(SB)</option>
@@ -29,6 +58,28 @@
                     <option value="UTG">枪口位(UTG)</option>
                     <option value="MP">中位(MP)</option>
                     <option value="CO">切位(CO)</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="opponentPosition">对手位置：</label>
+                <select id="opponentPosition">
+                    <option value="BTN">按钮位(BTN)</option>
+                    <option value="SB">小盲(SB)</option>
+                    <option value="BB">大盲(BB)</option>
+                    <option value="UTG">枪口位(UTG)</option>
+                    <option value="MP">中位(MP)</option>
+                    <option value="CO">切位(CO)</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="gameStage">当前轮次：</label>
+                <select id="gameStage">
+                    <option value="preflop">翻牌前</option>
+                    <option value="flop">翻牌圈</option>
+                    <option value="turn">转牌圈</option>
+                    <option value="river">河牌圈</option>
                 </select>
             </div>
             
@@ -42,7 +93,20 @@
                 <input type="text" id="opponentAction" placeholder="例如：全压500BB">
             </div>
 
-            <button id="analyzeBtn">分析</button>
+            <button id="analyzeStructuredBtn">分析</button>
+        </div>
+
+        <!-- 自由文本输入表单 -->
+        <div id="freetextInput" class="input-section" style="display: none;">
+            <div class="form-group">
+                <label for="situationText">请描述牌局情况：</label>
+                <textarea id="situationText" rows="6" placeholder="请描述完整的牌局情况，例如：
+我在BTN位置，手牌是红桃A和方块K，
+翻牌是红桃K、梅花10、方块2，
+底池100BB，对手全压500BB，
+我该怎么打？"></textarea>
+            </div>
+            <button id="analyzeFreetextBtn">分析</button>
         </div>
 
         <div class="result-section">

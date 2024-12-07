@@ -1,28 +1,77 @@
-document.getElementById('analyzeBtn').addEventListener('click', analyzePokerGame);
+// 初始化扑克牌选项
+const suits = ['♠️', '♥️', '♣️', '♦️'];
+const ranks = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
 
-async function analyzePokerGame() {
-    const handCards = document.getElementById('handCards').value;
-    const communityCards = document.getElementById('communityCards').value;
+function initializeCardSelectors() {
+    const cardSelects = document.querySelectorAll('.card-select');
+    cardSelects.forEach(select => {
+        select.innerHTML = '<option value="">选择牌</option>';
+        suits.forEach(suit => {
+            ranks.forEach(rank => {
+                const option = document.createElement('option');
+                option.value = `${rank}${suit}`;
+                option.textContent = `${rank}${suit}`;
+                select.appendChild(option);
+            });
+        });
+    });
+}
+
+// 切换输入模式
+document.querySelectorAll('.mode-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        
+        const mode = btn.dataset.mode;
+        document.getElementById('structuredInput').style.display = 
+            mode === 'structured' ? 'block' : 'none';
+        document.getElementById('freetextInput').style.display = 
+            mode === 'freetext' ? 'block' : 'none';
+    });
+});
+
+// 结构化输入分析
+document.getElementById('analyzeStructuredBtn').addEventListener('click', async () => {
+    const card1 = document.getElementById('card1').value;
+    const card2 = document.getElementById('card2').value;
+    const flop1 = document.getElementById('flop1').value;
+    const flop2 = document.getElementById('flop2').value;
+    const flop3 = document.getElementById('flop3').value;
+    const turn = document.getElementById('turn').value;
+    const river = document.getElementById('river').value;
     const position = document.getElementById('position').value;
+    const opponentPosition = document.getElementById('opponentPosition').value;
+    const gameStage = document.getElementById('gameStage').value;
     const potSize = document.getElementById('potSize').value;
     const opponentAction = document.getElementById('opponentAction').value;
-    
-    const resultDiv = document.getElementById('analysisResult');
-    
-    // 验证输入
-    if (!handCards || !communityCards || !potSize || !opponentAction) {
-        resultDiv.innerHTML = '<div class="error">请填写所有必要信息！</div>';
-        return;
-    }
 
-    // 构建分析请求文本
-    const analysisRequest = `
-        手牌：${handCards}
-        位置：${position}
+    const situation = `
+        我的手牌：${card1} ${card2}
+        我的位置：${position}
+        对手位置：${opponentPosition}
+        当前轮次：${gameStage}
+        公共牌：${flop1} ${flop2} ${flop3} ${turn} ${river}
         底池：${potSize}BB
-        公共牌：${communityCards}
         对手行动：${opponentAction}
     `;
+
+    await analyzePokerGame(situation);
+});
+
+// 自由文本分析
+document.getElementById('analyzeFreetextBtn').addEventListener('click', async () => {
+    const situation = document.getElementById('situationText').value;
+    await analyzePokerGame(situation);
+});
+
+async function analyzePokerGame(situation) {
+    const resultDiv = document.getElementById('analysisResult');
+    
+    if (!situation.trim()) {
+        resultDiv.innerHTML = '<div class="error">请输入牌局信息！</div>';
+        return;
+    }
 
     try {
         resultDiv.innerHTML = '<div class="loading">分析中，请稍候...</div>';
@@ -31,7 +80,7 @@ async function analyzePokerGame() {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer sk-86165c5c418a4584800df8a9627f2ed2'
+                'Authorization': 'Bearer ' + (localStorage.getItem('apiKey') || prompt('请输入你的 API Key:'))
             },
             body: JSON.stringify({
                 model: "deepseek-chat",
@@ -42,7 +91,7 @@ async function analyzePokerGame() {
                     },
                     {
                         role: "user",
-                        content: analysisRequest
+                        content: situation
                     }
                 ]
             })
@@ -62,6 +111,10 @@ async function analyzePokerGame() {
 }
 
 function formatAnalysis(analysis) {
-    // 将分析结果转换为HTML格式，保持换行
     return analysis.split('\n').map(line => `<p>${line}</p>`).join('');
 }
+
+// 初始化页面
+document.addEventListener('DOMContentLoaded', () => {
+    initializeCardSelectors();
+});

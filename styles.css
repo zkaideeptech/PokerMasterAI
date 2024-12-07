@@ -71,3 +71,67 @@ button:hover {
     border-radius: 4px;
     margin-top: 10px;
 }
+
+.input-mode-switch {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.mode-btn {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #007bff;
+    background-color: white;
+    color: #007bff;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.mode-btn.active {
+    background-color: #007bff;
+    color: white;
+}
+
+.card-selector {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.card-select {
+    width: 120px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+textarea {
+    width: 100%;
+    min-height: 150px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    resize: vertical;
+}
+
+.form-group select {
+    width: calc(100% - 130px);
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+@media (max-width: 768px) {
+    .form-group label {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+    
+    .form-group select,
+    .form-group input {
+        width: 100%;
+    }
+}
