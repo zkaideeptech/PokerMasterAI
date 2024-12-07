@@ -1,0 +1,367 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.input-section {
+    margin: 20px 0;
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: inline-block;
+    width: 120px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input, select {
+    width: calc(100% - 130px);
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+button {
+    width: 100%;
+    padding: 12px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.result-section {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+
+#analysisResult {
+    white-space: pre-wrap;
+    line-height: 1.6;
+}
+
+.loading {
+    text-align: center;
+    color: #666;
+}
+
+.error {
+    color: #dc3545;
+    padding: 10px;
+    background-color: #f8d7da;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+.input-mode-switch {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.mode-btn {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #007bff;
+    background-color: white;
+    color: #007bff;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.mode-btn.active {
+    background-color: #007bff;
+    color: white;
+}
+
+.card-selector {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.card-selector select {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 100px;
+    font-size: 14px;
+}
+
+.card-selector select optgroup.hearts,
+.card-selector select optgroup.diamonds {
+    color: red;
+}
+
+.card-selector select optgroup.spades,
+.card-selector select optgroup.clubs {
+    color: black;
+}
+
+.card-selector select optgroup option {
+    color: inherit;
+}
+
+.card-selector select option {
+    padding: 4px;
+}
+
+textarea {
+    width: 100%;
+    min-height: 150px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    resize: vertical;
+}
+
+.form-group select {
+    width: calc(100% - 130px);
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+@media (max-width: 768px) {
+    .form-group label {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+    
+    .form-group select,
+    .form-group input {
+        width: 100%;
+    }
+}
+
+.action-history-container {
+    margin-bottom: 10px;
+}
+
+.action-history-entry {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 5px;
+    align-items: center;
+}
+
+.action-history-entry select,
+.action-history-entry input {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.remove-action {
+    background: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+}
+
+.secondary-btn {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.secondary-btn:hover {
+    background-color: #5a6268;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    margin-left: 5px;
+    cursor: help;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 200px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -100px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* 禁用选项的样式 */
+.card-selector select option:disabled {
+    color: #999 !important;
+    background-color: #f5f5f5;
+}
+
+/* 添加红色花色样式 */
+.card-select option.red {
+    color: red !important;
+}
+
+/* 基础样式 */
+.card-select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 8px;
+    width: 120px;
+    cursor: pointer;
+}
+
+/* 关键修改：为下拉列表中的红色花色设置样式 */
+.card-select option[value*="H"],
+.card-select option[value*="D"],
+select option[value*="H"],
+select option[value*="D"] {
+    color: red !important;
+    background-color: white;
+}
+
+/* 为黑色花色设置样式 */
+.card-select option[value*="S"],
+.card-select option[value*="C"],
+select option[value*="S"],
+select option[value*="C"] {
+    color: black !important;
+    background-color: white;
+}
+
+/* 禁用状态的样式 */
+.card-select option:disabled,
+select option:disabled {
+    background-color: #f5f5f5 !important;
+    color: #999 !important;
+}
+
+/* 确保选项在下拉时可见 */
+.card-select option,
+select option {
+    padding: 8px;
+    font-size: 14px;
+}
+
+/* 添加特定浏览器的支持 */
+@-moz-document url-prefix() {
+    .card-select option[value*="H"],
+    .card-select option[value*="D"] {
+        color: red !important;
+    }
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    .card-select option[value*="H"],
+    .card-select option[value*="D"] {
+        color: red !important;
+    }
+}
+
+.custom-select-wrapper {
+    position: relative;
+    width: 120px;
+    font-size: 14px;
+}
+
+.custom-select {
+    position: relative;
+    cursor: pointer;
+}
+
+.custom-select-trigger {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: white;
+}
+
+.custom-options {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    max-height: 300px;
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+.custom-select.open .custom-options {
+    display: block;
+}
+
+.option-group {
+    padding: 5px 0;
+}
+
+.option-group-label {
+    padding: 5px 10px;
+    font-weight: bold;
+    background: #f5f5f5;
+}
+
+.option {
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.option:hover {
+    background: #f0f0f0;
+}
+
+.option.red {
+    color: red;
+}
+
+.option.disabled {
+    color: #999;
+    background: #f5f5f5;
+    cursor: not-allowed;
+}

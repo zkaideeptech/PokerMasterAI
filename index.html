@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>德州扑克分析助手</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>德州扑克分析助手</h1>
+        
+        <div class="input-mode-switch">
+            <button class="mode-btn active" data-mode="structured">结构化输入</button>
+            <button class="mode-btn" data-mode="freetext">自由文本输入</button>
+        </div>
+
+        <!-- 结构化输入表单 -->
+        <div id="structuredInput" class="input-section">
+            <div class="form-group">
+                <label>手牌：</label>
+                <div class="custom-select-wrapper">
+                    <div class="custom-select" id="card1">
+                        <div class="custom-select-trigger">选择牌</div>
+                        <div class="custom-options">
+                            <div class="option-group">
+                                <div class="option-group-label">红桃</div>
+                                <div class="option red" data-value="AH">A&#9829;</div>
+                                <div class="option red" data-value="KH">K&#9829;</div>
+                                <div class="option red" data-value="QH">Q&#9829;</div>
+                                <div class="option red" data-value="JH">J&#9829;</div>
+                                <div class="option red" data-value="TH">T&#9829;</div>
+                                <div class="option red" data-value="9H">9&#9829;</div>
+                                <div class="option red" data-value="8H">8&#9829;</div>
+                                <div class="option red" data-value="7H">7&#9829;</div>
+                                <div class="option red" data-value="6H">6&#9829;</div>
+                                <div class="option red" data-value="5H">5&#9829;</div>
+                                <div class="option red" data-value="4H">4&#9829;</div>
+                                <div class="option red" data-value="3H">3&#9829;</div>
+                                <div class="option red" data-value="2H">2&#9829;</div>
+                            </div>
+                            <div class="option-group">
+                                <div class="option-group-label">方块</div>
+                                <div class="option red" data-value="AD">A&#9830;</div>
+                                <div class="option red" data-value="KD">K&#9830;</div>
+                                <div class="option red" data-value="QD">Q&#9830;</div>
+                                <div class="option red" data-value="JD">J&#9830;</div>
+                                <div class="option red" data-value="TD">T&#9830;</div>
+                                <div class="option red" data-value="9D">9&#9830;</div>
+                                <div class="option red" data-value="8D">8&#9830;</div>
+                                <div class="option red" data-value="7D">7&#9830;</div>
+                                <div class="option red" data-value="6D">6&#9830;</div>
+                                <div class="option red" data-value="5D">5&#9830;</div>
+                                <div class="option red" data-value="4D">4&#9830;</div>
+                                <div class="option red" data-value="3D">3&#9830;</div>
+                                <div class="option red" data-value="2D">2&#9830;</div>
+                            </div>
+                            <div class="option-group">
+                                <div class="option-group-label">黑桃</div>
+                                <div class="option" data-value="AS">A&#9824;</div>
+                                <div class="option" data-value="KS">K&#9824;</div>
+                                <div class="option" data-value="QS">Q&#9824;</div>
+                                <div class="option" data-value="JS">J&#9824;</div>
+                                <div class="option" data-value="TS">T&#9824;</div>
+                                <div class="option" data-value="9S">9&#9824;</div>
+                                <div class="option" data-value="8S">8&#9824;</div>
+                                <div class="option" data-value="7S">7&#9824;</div>
+                                <div class="option" data-value="6S">6&#9824;</div>
+                                <div class="option" data-value="5S">5&#9824;</div>
+                                <div class="option" data-value="4S">4&#9824;</div>
+                                <div class="option" data-value="3S">3&#9824;</div>
+                                <div class="option" data-value="2S">2&#9824;</div>
+                            </div>
+                            <div class="option-group">
+                                <div class="option-group-label">梅花</div>
+                                <div class="option" data-value="AC">A&#9827;</div>
+                                <div class="option" data-value="KC">K&#9827;</div>
+                                <div class="option" data-value="QC">Q&#9827;</div>
+                                <div class="option" data-value="JC">J&#9827;</div>
+                                <div class="option" data-value="TC">T&#9827;</div>
+                                <div class="option" data-value="9C">9&#9827;</div>
+                                <div class="option" data-value="8C">8&#9827;</div>
+                                <div class="option" data-value="7C">7&#9827;</div>
+                                <div class="option" data-value="6C">6&#9827;</div>
+                                <div class="option" data-value="5C">5&#9827;</div>
+                                <div class="option" data-value="4C">4&#9827;</div>
+                                <div class="option" data-value="3C">3&#9827;</div>
+                                <div class="option" data-value="2C">2&#9827;</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>手牌：</label>
+                <div class="custom-select-wrapper">
+                    <div class="custom-select" id="card2">
+                        <div class="custom-select-trigger">选择牌</div>
+                        <div class="custom-options">
+                            <div class="option-group">
+                                <div class="option-group-label">红桃</div>
+                                <div class="option red" data-value="AH">A&#9829;</div>
+                                <div class="option red" data-value="KH">K&#9829;</div>
+                                <div class="option red" data-value="QH">Q&#9829;</div>
+                                <div class="option red" data-value="JH">J&#9829;</div>
+                                <div class="option red" data-value="TH">T&#9829;</div>
+                                <div class="option red" data-value="9H">9&#9829;</div>
+                                <div class="option red" data-value="8H">8&#9829;</div>
+                                <div class="option red" data-value="7H">7&#9829;</div>
+                                <div class="option red" data-value="6H">6&#9829;</div>
+                                <div class="option red" data-value="5H">5&#9829;</div>
+                                <div class="option red" data-value="4H">4&#9829;</div>
+                                <div class="option red" data-value="3H">3&#9829;</div>
+                                <div class="option red" data-value="2H">2&#9829;</div>
+                            </div>
+                            <div class="option-group">
+                                <div class="option-group-label">方块</div>
+                                <div class="option red" data-value="AD">A&#9830;</div>
+                                <div class="option red" data-value="KD">K&#9830;</div>
+                                <div class="option red" data-value="QD">Q&#9830;</div>
+                                <div class="option red" data-value="JD">J&#9830;</div>
+                                <div class="option red" data-value="TD">T&#9830;</div>
+                                <div class="option red" data-value="9D">9&#9830;</div>
+                                <div class="option red" data-value="8D">8&#9830;</div>
+                                <div class="option red" data-value="7D">7&#9830;</div>
+                                <div class="option red" data-value="6D">6&#9830;</div>
+                                <div class="option red" data-value="5D">5&#9830;</div>
+                                <div class="option red" data-value="4D">4&#9830;</div>
+                                <div class="option red" data-value="3D">3&#9830;</div>
+                                <div class="option red" data-value="2D">2&#9830;</div>
+                            </div>
+                            <div class="option-group">
+                                <div class="option-group-label">黑桃</div>
+                                <div class="option" data-value="AS">A&#9824;</div>
+                                <div class="option" data-value="KS">K&#9824;</div>
+                                <div class="option" data-value="QS">Q&#9824;</div>
+                                <div class="option" data-value="JS">J&#9824;</div>
+                                <div class="option" data-value="TS">T&#9824;</div>
+                                <div class="option" data-value="9S">9&#9824;</div>
+                                <div class="option" data-value="8S">8&#9824;</div>
+                                <div class="option" data-value="7S">7&#9824;</div>
+                                <div class="option" data-value="6S">6&#9824;</div>
+                                <div class="option" data-value="5S">5&#9824;</div>
+                                <div class="option" data-value="4S">4&#9824;</div>
+                                <div class="option" data-value="3S">3&#9824;</div>
+                                <div class="option" data-value="2S">2&#9824;</div>
+                            </div>
+                            <div class="option-group">
+                                <div class="option-group-label">梅花</div>
+                                <div class="option" data-value="AC">A&#9827;</div>
+                                <div class="option" data-value="KC">K&#9827;</div>
+                                <div class="option" data-value="QC">Q&#9827;</div>
+                                <div class="option" data-value="JC">J&#9827;</div>
+                                <div class="option" data-value="TC">T&#9827;</div>
+                                <div class="option" data-value="9C">9&#9827;</div>
+                                <div class="option" data-value="8C">8&#9827;</div>
+                                <div class="option" data-value="7C">7&#9827;</div>
+                                <div class="option" data-value="6C">6&#9827;</div>
+                                <div class="option" data-value="5C">5&#9827;</div>
+                                <div class="option" data-value="4C">4&#9827;</div>
+                                <div class="option" data-value="3C">3&#9827;</div>
+                                <div class="option" data-value="2C">2&#9827;</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>公共牌：</label>
+                <div class="card-selector">
+                    <div class="custom-select-wrapper">
+                        <div class="custom-select" id="flop1">
+                            <div class="custom-select-trigger">选择翻牌1</div>
+                            <div class="custom-options">
+                                <div class="option-group">
+                                    <div class="option-group-label">���桃</div>
+                                    <div class="option red" data-value="AH">A&#9829;</div>
+                                    <div class="option red" data-value="KH">K&#9829;</div>
+                                    <div class="option red" data-value="QH">Q&#9829;</div>
+                                    <div class="option red" data-value="JH">J&#9829;</div>
+                                    <div class="option red" data-value="TH">T&#9829;</div>
+                                    <div class="option red" data-value="9H">9&#9829;</div>
+                                    <div class="option red" data-value="8H">8&#9829;</div>
+                                    <div class="option red" data-value="7H">7&#9829;</div>
+                                    <div class="option red" data-value="6H">6&#9829;</div>
+                                    <div class="option red" data-value="5H">5&#9829;</div>
+                                    <div class="option red" data-value="4H">4&#9829;</div>
+                                    <div class="option red" data-value="3H">3&#9829;</div>
+                                    <div class="option red" data-value="2H">2&#9829;</div>
+                                </div>
+                                <div class="option-group">
+                                    <div class="option-group-label">方块</div>
+                                    <div class="option red" data-value="AD">A&#9830;</div>
+                                    <div class="option red" data-value="KD">K&#9830;</div>
+                                    <div class="option red" data-value="QD">Q&#9830;</div>
+                                    <div class="option red" data-value="JD">J&#9830;</div>
+                                    <div class="option red" data-value="TD">T&#9830;</div>
+                                    <div class="option red" data-value="9D">9&#9830;</div>
+                                    <div class="option red" data-value="8D">8&#9830;</div>
+                                    <div class="option red" data-value="7D">7&#9830;</div>
+                                    <div class="option red" data-value="6D">6&#9830;</div>
+                                    <div class="option red" data-value="5D">5&#9830;</div>
+                                    <div class="option red" data-value="4D">4&#9830;</div>
+                                    <div class="option red" data-value="3D">3&#9830;</div>
+                                    <div class="option red" data-value="2D">2&#9830;</div>
+                                </div>
+                                <div class="option-group">
+                                    <div class="option-group-label">黑桃</div>
+                                    <div class="option" data-value="AS">A&#9824;</div>
+                                    <div class="option" data-value="KS">K&#9824;</div>
+                                    <div class="option" data-value="QS">Q&#9824;</div>
+                                    <div class="option" data-value="JS">J&#9824;</div>
+                                    <div class="option" data-value="TS">T&#9824;</div>
+                                    <div class="option" data-value="9S">9&#9824;</div>
+                                    <div class="option" data-value="8S">8&#9824;</div>
+                                    <div class="option" data-value="7S">7&#9824;</div>
+                                    <div class="option" data-value="6S">6&#9824;</div>
+                                    <div class="option" data-value="5S">5&#9824;</div>
+                                    <div class="option" data-value="4S">4&#9824;</div>
+                                    <div class="option" data-value="3S">3&#9824;</div>
+                                    <div class="option" data-value="2S">2&#9824;</div>
+                                </div>
+                                <div class="option-group">
+                                    <div class="option-group-label">梅花</div>
+                                    <div class="option" data-value="AC">A&#9827;</div>
+                                    <div class="option" data-value="KC">K&#9827;</div>
+                                    <div class="option" data-value="QC">Q&#9827;</div>
+                                    <div class="option" data-value="JC">J&#9827;</div>
+                                    <div class="option" data-value="TC">T&#9827;</div>
+                                    <div class="option" data-value="9C">9&#9827;</div>
+                                    <div class="option" data-value="8C">8&#9827;</div>
+                                    <div class="option" data-value="7C">7&#9827;</div>
+                                    <div class="option" data-value="6C">6&#9827;</div>
+                                    <div class="option" data-value="5C">5&#9827;</div>
+                                    <div class="option" data-value="4C">4&#9827;</div>
+                                    <div class="option" data-value="3C">3&#9827;</div>
+                                    <div class="option" data-value="2C">2&#9827;</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="custom-select-wrapper">
+                        <div class="custom-select" id="flop2">
+                            <div class="custom-select-trigger">选择翻牌2</div>
+                            <div class="custom-options">
+                                <div class="option-group">
+                                    <div class="option-group-label">红桃</div>
+                                    <div class="option red" data-value="AH">A&#9829;</div>
+                                    <div class="option red" data-value="KH">K&#9829;</div>
+                                    <div class="option red" data-value="QH">Q&#9829;</div>
+                                    <div class="option red" data-value="JH">J&#9829;</div>
+                                    <div class="option red" data-value="TH">T&#9829;</div>
+                                    <div class="option red" data-value="9H">9&#9829;</div>
+                                    <div class="option red" data-value="8H">8&#9829;</div>
+                                    <div class="option red" data-value="7H">7&#9829;</div>
+                                    <div class="option red" data-value="6H">6&#9829;</div>
+                                    <div class="option red" data-value="5H">5&#9829;</div>
+                                    <div class="option red" data-value="4H">4&#9829;</div>
+                                    <div class="option red" data-value="3H">3&#9829;</div>
+                                    <div class="option red" data-value="2H">2&#9829;</div>
+                                </div>
+                                <div class="option-group">
+                                    <div class="option-group-label">方块</div>
+                                    <div class="option red" data-value="AD">A&#9830;</div>
+                                    <div class="option red" data-value="KD">K&#9830;</div>
+                                    <div class="option red" data-value="QD">Q&#9830;</div>
+                                    <div class="option red" data-value="JD">J&#9830;</div>
+                                    <div class="option red" data-value="TD">T&#9830;</div>
+                                    <div class="option red" data-value="9D">9&#9830;</div>
+                                    <div class="option red" data-value="8D">8&#9830;</div>
+                                    <div class="option red" data-value="7D">7&#9830;</div>
+                                    <div class="option red" data-value="6D">6&#9830;</div>
+                                    <div class="option red" data-value="5D">5&#9830;</div>
+                                    <div class="option red" data-value="4D">4&#9830;</div>
+                                    <div class="option red" data-value="3D">3&#9830;</div>
+                                    <div class="option red" data-value="2D">2&#9830;</div>
+                                </div>
+                                <div class="option-group">
+                                    <div class="option-group-label">黑桃</div>
+                                    <div class="option" data-value="AS">A&#9824;</div>
+                                    <div class="option" data-value="KS">K&#9824;</div>
+                                    <div class="option" data-value="QS">Q&#9824;</div>
+                                    <div class="option" data-value="JS">J&#9824;</div>
+                                    <div class="option" data-value="TS">T&#9824;</div>
+                                    <div class="option" data-value="9S">9&#9824;</div>
+                                    <div class="option" data-value="8S">8&#9824;</div>
+                                    <div class="option" data-value="7S">7&#9824;</div>
+                                    <div class="option" data-value="6S">6&#9824;</div>
+                                    <div class="option" data-value="5S">5&#9824;</div>
+                                    <div class="option" data-value="4S">4&#9824;</div>
+                                    <div class="option" data-value="3S">3&#9824;</div>
+                                    <div class="option" data-value="2S">2&#9824;</div>
+                                </div>
+                                <div class="option-group">
+                                    <div class="option-group-label">梅花</div>
+                                    <div class="option" data-value="AC">A&#9827;</div>
+                                    <div class="option" data-value="KC">K&#9827;</div>
+                                    <div class="option" data-value="QC">Q&#9827;</div>
+                                    <div class="option" data-value="JC">J&#9827;</div>
+                                    <div class="option" data-value="TC">T&#9827;</div>
+                                    <div class="option" data-value="9C">9&#9827;</div>
+                                    <div class="option" data-value="8C">8&#9827;</div>
+                                    <div class="option" data-value="7C">7&#9827;</div>
+                                    <div class="option" data-value="6C">6&#9827;</div>
+                                    <div class="option" data-value="5C">5&#9827;</div>
+                                    <div class="option" data-value="4C">4&#9827;</div>
+                                    <div class="option" data-value="3C">3&#9827;</div>
+                                    <div class="option" data-value="2C">2&#9827;</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="custom-select-wrapper">
+                        <div class="custom-select" id="flop3">
+                            <div class="custom-select-trigger">选择翻牌3</div>
+                            <div class="custom-options">
+                                <div class="option-group">
+                                    <div class="option-group-label">红桃</div>
+                                    <div class="option red" data-value="AH">A&#9829;</div>
+                                    <div class="option red" data-value="KH">K&#9829;</div>
+                                    <div class="option red" data-value="QH">Q&#9829;</div>
+                                    <div class="option red" data-value="JH">J&#9829;</div>
+                                    <div class="option red" data-value="TH">T&#9829;</div>
+                                    <div class="option red" data-value="9H">9&#9829;</div>
+                                    <div class="option red" data-value="8H">8&#9829;</div>
+                                    <div class="option red" data-value="7H">7&#9829;</div>
+                                    <div class="option red" data-value="6H">6&#9829;</div>
+                                    <div class="option red" data-value="5H">5&#9829;</div>
+                                    <div class="option red" data-value="4H">4&#9829;</div>
+                                    <div class="option red" data-value="3H">3&#9829;</div>
+                                    <div class="option red" data-value="2H">2&#9829;</div>
+                                </div>
+                                <div class="option-group">
+                                    <div class="option-group-label">方块</div>
+                                    <div class="option red" data-value="AD">A&#9830;</div>
+                                    <div class="option red" data-value="KD">K&#9830;</div>
+                                    <div class="option red" data-value="QD">Q&#9830;</div>
+                                    <div class="option red" data-value="JD">J&#9830;</div>
+                                    <div class="option red" data-value="TD">T&#9830;</div>
+                                    <div class="option red" data-value="9D">9&#9830;</div>
+                                    <div class="option red" data-value="8D">8&#9830;</div>
+                                    <div class="option red" data-value="7D">7&#9830;</div>
+                                    <div class="option red" data-value="6D">6&#9830;</div>
+                                    <div class="option red" data-value="5D">5&#9830;</div>
+                                    <div class="option red" data-value="4D">4&#9830;</div>
+                                    <div class="option red" data-value="3D">3&#9830;</div>
+                                    <div class="option red" data-value="2D">2&#9830;</div>
+                                </div>
+                                <div class="option-group">
+                                    <div class="option-group-label">黑桃</div>
+                                    <div class="option" data-value="AS">A&#9824;</div>
+                                    <div class="option" data-value="KS">K&#9824;</div>
+                                    <div class="option" data-value="QS">Q&#9824;</div>
+                                    <div class="option" data-value="JS">J&#9824;</div>
+                                    <div class="option" data-value="TS">T&#9824;</div>
+                                    <div class="option" data-value="9S">9&#9824;</div>
+                                    <div class="option" data-value="8S">8&#9824;</div>
+                                    <div class="option" data-value="7S">7&#9824;</div>
+                                    <div class="option" data-value="6S">6&#9824;</div>
+                                    <div class="option" data-value="5S">5&#9824;</div>
+                                    <div class="option" data-value="4S">4&#9824;</div>
+                                    <div class="option" data-value="3S">3&#9824;</div>
+                                    <div class="option" data-value="2S">2&#9824;</div>
+                                </div>
+                                <div class="option-group">
+                                    <div class="option-group-label">梅花</div>
+                                    <div class="option" data-value="AC">A&#9827;</div>
+                                    <div class="option" data-value="KC">K&#9827;</div>
+                                    <div class="option" data-value="QC">Q&#9827;</div>
+                                    <div class="option" data-value="JC">J&#9827;</div>
+                                    <div class="option" data-value="TC">T&#9827;</div>
+                                    <div class="option" data-value="9C">9&#9827;</div>
+                                    <div class="option" data-value="8C">8&#9827;</div>
+                                    <div class="option" data-value="7C">7&#9827;</div>
+                                    <div class="option" data-value="6C">6&#9827;</div>
+                                    <div class="option" data-value="5C">5&#9827;</div>
+                                    <div class="option" data-value="4C">4&#9827;</div>
+                                    <div class="option" data-value="3C">3&#9827;</div>
+                                    <div class="option" data-value="2C">2&#9827;</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="custom-select-wrapper">
+                        <div class="custom-select" id="turn">
+                            <div class="custom-select-trigger">选择转牌</div>
+                            <div class="custom-options">
+                                <div class="option-group">
+                                    <div class="option-group-label">红桃</div>
+                                    <div class="option red" data-value="AH">A&#9829;</div>
+                                    <div class="option red" data-value="KH">K&#9829;</div>
+                                    <div class="option red" data-value="QH">Q&#9829;</div>
+                                    <div class="option red" data-value="JH">J&#9829;</div>
+                                    <div class="option red" data-value="TH">T&#9829;</div>
+                                    <div class="option red" data-value="9H">9&#9829;</div>
+                                    <div class="option red" data-value="8H">8&#9829;</div>
+                                    <div class="option red" data-value="7H">7&#9829;</div>
+                                    <div class="option red" data-value="6H">6&#9829;</div>
+                                    <div class="option red" data-value="5H">5&#9829;</div>
+                                    <div class="option red" data-value="4H">4&#9829;</div>
+                                    <div class="option red" data-value="3H">3&#9829;</div>
+                                    <div class="option red" data-value="2H">2&#9829;</div>
+                                </div>
+                                <div class="option-group">
+                                    <div class="option-group-label">方块</div>
+                                    <div class="option red" data-value="AD">A&#9830;</div>
+                                    <div class="option red" data-value="KD">K&#9830;</div>
+                                    <div class="option red" data-value="QD">Q&#9830;</div>
+                                    <div class="option red" data-value="JD">J&#9830;</div>
+                                    <div class="option red" data-value="TD">T&#9830;</div>
+                                    <div class="option red" data-value="9D">9&#9830;</div>
+                                    <div class="option red" data-value="8D">8&#9830;</div>
+                                    <div class="option red" data-value="7D">7&#9830;</div>
+                                    <div class="option red" data-value="6D">6&#9830;</div>
+                                    <div class="option red" data-value="5D">5&#9830;</div>
+                                    <div class="option red" data-value="4D">4&#9830;</div>
+                                    <div class="option red" data-value="3D">3&#9830;</div>
+                                    <div class="option red" data-value="2D">2&#9830;</div>
+                                </div>
+                                <div class="option-group">
+                                    <div class="option-group-label">黑桃</div>
+                                    <div class="option" data-value="AS">A&#9824;</div>
+                                    <div class="option" data-value="KS">K&#9824;</div>
+                                    <div class="option" data-value="QS">Q&#9824;</div>
+                                    <div class="option" data-value="JS">J&#9824;</div>
+                                    <div class="option" data-value="TS">T&#9824;</div>
+                                    <div class="option" data-value="9S">9&#9824;</div>
+                                    <div class="option" data-value="8S">8&#9824;</div>
+                                    <div class="option" data-value="7S">7&#9824;</div>
+                                    <div class="option" data-value="6S">6&#9824;</div>
+                                    <div class="option" data-value="5S">5&#9824;</div>
+                                    <div class="option" data-value="4S">4&#9824;</div>
+                                    <div class="option" data-value="3S">3&#9824;</div>
+                                    <div class="option" data-value="2S">2&#9824;</div>
+                                </div>
+                                <div class="option-group">
+                                    <div class="option-group-label">梅花</div>
+                                    <div class="option" data-value="AC">A&#9827;</div>
+                                    <div class="option" data-value="KC">K&#9827;</div>
+                                    <div class="option" data-value="QC">Q&#9827;</div>
+                                    <div class="option" data-value="JC">J&#9827;</div>
+                                    <div class="option" data-value="TC">T&#9827;</div>
+                                    <div class="option" data-value="9C">9&#9827;</div>
+                                    <div class="option" data-value="8C">8&#9827;</div>
+                                    <div class="option" data-value="7C">7&#9827;</div>
+                                    <div class="option" data-value="6C">6&#9827;</div>
+                                    <div class="option" data-value="5C">5&#9827;</div>
+                                    <div class="option" data-value="4C">4&#9827;</div>
+                                    <div class="option" data-value="3C">3&#9827;</div>
+                                    <div class="option" data-value="2C">2&#9827;</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="custom-select-wrapper">
+                        <div class="custom-select" id="river">
+                            <div class="custom-select-trigger">选择河牌</div>
+                            <div class="custom-options">
+                                <div class="option-group">
+                                    <div class="option-group-label">红桃</div>
+                                    <div class="option red" data-value="AH">A&#9829;</div>
+                                    <div class="option red" data-value="KH">K&#9829;</div>
+                                    <div class="option red" data-value="QH">Q&#9829;</div>
+                                    <div class="option red" data-value="JH">J&#9829;</div>
+                                    <div class="option red" data-value="TH">T&#9829;</div>
+                                    <div class="option red" data-value="9H">9&#9829;</div>
+                                    <div class="option red" data-value="8H">8&#9829;</div>
+                                    <div class="option red" data-value="7H">7&#9829;</div>
+                                    <div class="option red" data-value="6H">6&#9829;</div>
+                                    <div class="option red" data-value="5H">5&#9829;</div>
+                                    <div class="option red" data-value="4H">4&#9829;</div>
+                                    <div class="option red" data-value="3H">3&#9829;</div>
+                                    <div class="option red" data-value="2H">2&#9829;</div>
+                                </div>
+                                <div class="option-group">
+                                    <div class="option-group-label">方块</div>
+                                    <div class="option red" data-value="AD">A&#9830;</div>
+                                    <div class="option red" data-value="KD">K&#9830;</div>
+                                    <div class="option red" data-value="QD">Q&#9830;</div>
+                                    <div class="option red" data-value="JD">J&#9830;</div>
+                                    <div class="option red" data-value="TD">T&#9830;</div>
+                                    <div class="option red" data-value="9D">9&#9830;</div>
+                                    <div class="option red" data-value="8D">8&#9830;</div>
+                                    <div class="option red" data-value="7D">7&#9830;</div>
+                                    <div class="option red" data-value="6D">6&#9830;</div>
+                                    <div class="option red" data-value="5D">5&#9830;</div>
+                                    <div class="option red" data-value="4D">4&#9830;</div>
+                                    <div class="option red" data-value="3D">3&#9830;</div>
+                                    <div class="option red" data-value="2D">2&#9830;</div>
+                                </div>
+                                <div class="option-group">
+                                    <div class="option-group-label">黑桃</div>
+                                    <div class="option" data-value="AS">A&#9824;</div>
+                                    <div class="option" data-value="KS">K&#9824;</div>
+                                    <div class="option" data-value="QS">Q&#9824;</div>
+                                    <div class="option" data-value="JS">J&#9824;</div>
+                                    <div class="option" data-value="TS">T&#9824;</div>
+                                    <div class="option" data-value="9S">9&#9824;</div>
+                                    <div class="option" data-value="8S">8&#9824;</div>
+                                    <div class="option" data-value="7S">7&#9824;</div>
+                                    <div class="option" data-value="6S">6&#9824;</div>
+                                    <div class="option" data-value="5S">5&#9824;</div>
+                                    <div class="option" data-value="4S">4&#9824;</div>
+                                    <div class="option" data-value="3S">3&#9824;</div>
+                                    <div class="option" data-value="2S">2&#9824;</div>
+                                </div>
+                                <div class="option-group">
+                                    <div class="option-group-label">梅花</div>
+                                    <div class="option" data-value="AC">A&#9827;</div>
+                                    <div class="option" data-value="KC">K&#9827;</div>
+                                    <div class="option" data-value="QC">Q&#9827;</div>
+                                    <div class="option" data-value="JC">J&#9827;</div>
+                                    <div class="option" data-value="TC">T&#9827;</div>
+                                    <div class="option" data-value="9C">9&#9827;</div>
+                                    <div class="option" data-value="8C">8&#9827;</div>
+                                    <div class="option" data-value="7C">7&#9827;</div>
+                                    <div class="option" data-value="6C">6&#9827;</div>
+                                    <div class="option" data-value="5C">5&#9827;</div>
+                                    <div class="option" data-value="4C">4&#9827;</div>
+                                    <div class="option" data-value="3C">3&#9827;</div>
+                                    <div class="option" data-value="2C">2&#9827;</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="position">我的位置：</label>
+                <select id="position">
+                    <option value="BTN">按钮位(BTN)</option>
+                    <option value="SB">小盲(SB)</option>
+                    <option value="BB">大盲(BB)</option>
+                    <option value="UTG">枪口位(UTG)</option>
+                    <option value="MP">中位(MP)</option>
+                    <option value="CO">切位(CO)</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="opponentPosition">对手位置：</label>
+                <select id="opponentPosition">
+                    <option value="BTN">按钮位(BTN)</option>
+                    <option value="SB">小盲(SB)</option>
+                    <option value="BB">大盲(BB)</option>
+                    <option value="UTG">枪口位(UTG)</option>
+                    <option value="MP">中位(MP)</option>
+                    <option value="CO">切位(CO)</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="gameStage">当前轮次：</label>
+                <select id="gameStage">
+                    <option value="preflop">翻牌前</option>
+                    <option value="flop">翻牌圈</option>
+                    <option value="turn">转牌圈</option>
+                    <option value="river">河牌圈</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="potSize">底池大小(BB)：</label>
+                <input type="number" id="potSize" placeholder="例如：100">
+            </div>
+            
+            <div class="form-group">
+                <label for="opponentAction">对手行动：</label>
+                <input type="text" id="opponentAction" placeholder="例如：全压500BB">
+            </div>
+
+            <div class="form-group">
+                <label for="myStack">我的筹码深度(BB)：</label>
+                <input type="number" id="myStack" placeholder="例如：100">
+            </div>
+
+            <div class="form-group">
+                <label for="opponentStack">对手筹码深度(BB)：</label>
+                <input type="number" id="opponentStack" placeholder="例如：100">
+            </div>
+
+            <div class="form-group">
+                <label for="opponentType">对手类型：</label>
+                <select id="opponentType">
+                    <option value="LAG">松凶型(LAG)</option>
+                    <option value="TAG">紧凶型(TAG)</option>
+                    <option value="LP">松弱型(LP)</option>
+                    <option value="TP">紧弱型(TP)</option>
+                    <option value="Unknown">不确定</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="actionHistory">之前的行动历史：</label>
+                <div class="action-history-container">
+                    <div class="action-history-entry">
+                        <select class="action-position">
+                            <option value="">选择位置</option>
+                            <option value="BTN">BTN</option>
+                            <option value="SB">SB</option>
+                            <option value="BB">BB</option>
+                            <option value="UTG">UTG</option>
+                            <option value="MP">MP</option>
+                            <option value="CO">CO</option>
+                        </select>
+                        <select class="action-type">
+                            <option value="">选择操作</option>
+                            <option value="fold">弃牌</option>
+                            <option value="call">跟注</option>
+                            <option value="raise">加注</option>
+                            <option value="check">过牌</option>
+                            <option value="bet">下注</option>
+                            <option value="allin">全压</option>
+                        </select>
+                        <input type="number" class="action-amount" placeholder="金额(BB)" style="width: 100px;">
+                        <button type="button" class="remove-action">×</button>
+                    </div>
+                </div>
+                <button type="button" id="addAction" class="secondary-btn">添加行动</button>
+            </div>
+
+            <button id="analyzeStructuredBtn">分析</button>
+        </div>
+
+        <!-- 自由文本输入表单 -->
+        <div id="freetextInput" class="input-section" style="display: none;">
+            <div class="form-group">
+                <label for="situationText">请描述牌局情况：</label>
+                <textarea id="situationText" rows="6" placeholder="请描述完整的牌局情况，例如：
+我在BTN位置，手牌是红桃A和方块K，
+翻牌是红桃K、梅花10、方块2，
+底池100BB，对手全压500BB，
+我该怎么打？"></textarea>
+            </div>
+            <button id="analyzeFreetextBtn">分析</button>
+        </div>
+
+        <div class="result-section">
+            <h2>分析结果</h2>
+            <div id="analysisResult"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
